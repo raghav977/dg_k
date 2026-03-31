@@ -45,7 +45,7 @@ const shopColor = (name = "") => {
 };
 
 const shopInitials = (name = "") =>
-  name.split(" ").slice(0, 2).map(w => w[0]).join("").toUpperCase() || "?";
+  name?.split(" ")?.slice(0, 2).map(w => w[0]).join("").toUpperCase() || "?";
 
 /* ─────────────────────────────────────────────
    SUB-COMPONENTS
@@ -217,7 +217,7 @@ const ShopList = () => {
   }, [q, shops]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
-  const pageItems  = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+  const pageItems  = filtered?.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   const nav = useCallback((path) => navigate(path), [navigate]);
 
