@@ -8,6 +8,8 @@ import {
   FiSearch, FiX, FiMapPin, FiShoppingBag,
   FiShoppingCart, FiClipboard, FiExternalLink,
 } from "react-icons/fi";
+import { FaStore } from "react-icons/fa";
+
 import { RiAppStoreLine } from "react-icons/ri";
 
 
@@ -283,7 +285,7 @@ const ShopList = () => {
         {pageItems.length === 0 && (
           <div className="rounded-2xl bg-white border border-gray-100 shadow-sm p-14 text-center">
             <div className="w-14 h-14 rounded-2xl mx-auto mb-4 flex items-center justify-center" style={{ background: G[50] }}>
-              <FiStore className="w-6 h-6" style={{ color: G[500] }} />
+              <FaStore className="w-6 h-6" style={{ color: G[500] }} />
             </div>
             <p className="font-semibold text-gray-700">No shops found</p>
             <p className="text-sm text-gray-400 mt-1">Try a different search term.</p>
