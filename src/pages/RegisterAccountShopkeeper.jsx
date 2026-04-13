@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { FiEye, FiEyeOff } from 'react-icons/fi'
 import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
@@ -83,6 +84,8 @@ const RegisterAccountShopkeeper = () => {
   const [loadingSubmit, setLoadingSubmit] = useState(false)
   const [error, setError] = useState('')
   const [info, setInfo] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword2, setShowPassword2] = useState(false)
 
   const [resendCooldown, setResendCooldown] = useState(0)
   const cooldownRef = useRef(null)
@@ -346,12 +349,42 @@ const RegisterAccountShopkeeper = () => {
 
                 <div>
                   <label className="block text-xs text-gray-700">Password</label>
-                  <input disabled={anyLoading} value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="mt-1 w-full border rounded-md px-2 py-2" />
+                  <div className="relative mt-1">
+                    <input
+                      disabled={anyLoading}
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      type={showPassword ? 'text' : 'password'}
+                      className="w-full border rounded-md px-2 py-2 pr-10"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                    >
+                      {showPassword ? <FiEyeOff size={18} /> : <FiEye size={18} />}
+                    </button>
+                  </div>
                 </div>
 
                 <div>
                   <label className="block text-xs text-gray-700">Confirm password</label>
-                  <input disabled={anyLoading} value={password2} onChange={(e) => setPassword2(e.target.value)} type="password" className="mt-1 w-full border rounded-md px-2 py-2" />
+                  <div className="relative mt-1">
+                    <input
+                      disabled={anyLoading}
+                      value={password2}
+                      onChange={(e) => setPassword2(e.target.value)}
+                      type={showPassword2 ? 'text' : 'password'}
+                      className="w-full border rounded-md px-2 py-2 pr-10"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword2(!showPassword2)}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                    >
+                      {showPassword2 ? <FiEyeOff size={18} /> : <FiEye size={18} />}
+                    </button>
+                  </div>
                 </div>
 
                 <div>
