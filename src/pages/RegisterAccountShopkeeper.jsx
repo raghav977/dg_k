@@ -221,10 +221,19 @@ const RegisterAccountShopkeeper = () => {
       setError('Passwords must match and be at least 8 characters long.')
       return
     }
+    // phone number validation regex 98 or 97 10digits
+    const phoneNumberRegex = /^(98|97)\d{8}$/
+    if(!phoneNumberRegex.test(phone)){
+      setError('Phone number must start with 98 or 97 and have 10 digit');
+      return;
+    }
+
     if (!yourAddress || !phone) {
       setError('Your address and phone number are required.')
       return
     }
+
+    
 
     setLoadingSubmit(true)
     try {
