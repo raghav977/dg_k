@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { FiEye, FiEyeOff } from 'react-icons/fi'
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
 
@@ -16,6 +17,7 @@ const LoginPage = () => {
   const [error, setError] = useState('')
   const [info, setInfo] = useState('')
   const [remember, setRemember] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   const submit = async (e) => {
     e.preventDefault()
@@ -110,7 +112,22 @@ const LoginPage = () => {
                 <label className="block text-xs text-gray-700">Password</label>
                 <a href="#" className="text-xs text-indigo-600 hover:underline">Forgot?</a>
               </div>
-              <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="mt-1 w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200" placeholder="Your password" />
+              <div className="relative mt-1">
+                <input
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  type={showPassword ? 'text' : 'password'}
+                  className="w-full border rounded-md px-3 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+                  placeholder="Your password"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                >
+                  {showPassword ? <FiEyeOff size={18} /> : <FiEye size={18} />}
+                </button>
+              </div>
             </div>
 
             <div className="flex items-center justify-between">
