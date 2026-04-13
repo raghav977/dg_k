@@ -171,6 +171,12 @@ const RegisterAccount = () => {
       setError('Passwords must match and be at least 8 characters long.')
       return
     }
+    // phone regex 98/97 10 digits
+      const phoneRegex = /^(98|97)\d{8}$/
+      if(phone && !phoneRegex.test(phone)) {
+        setError('Phone number must start with 98 or 97 and be 10 digits long.')
+        return
+      }
     if (!address || !phone) {
       setError('Address and phone number are required.')
       return
