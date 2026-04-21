@@ -6,7 +6,7 @@ import { addToCart } from '../../../../../../api/Carts';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { FiShoppingCart, FiCheck, FiLoader } from 'react-icons/fi';
 
-const BACKEND_URL = 'http://localhost:8000/'
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 const ProductList = ({ products: initial = null }) => {
 
